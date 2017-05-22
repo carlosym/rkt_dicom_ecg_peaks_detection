@@ -38,16 +38,8 @@ RUN apt-get -qq update && apt-get -qq install -y       \
 
 RUN pip3 install --no-cache-dir PyWavelets
 
-# WORKDIR /work
-#COPY exp1.py /home
-#COPY functions.py /home
-
-COPY rkt_dicom_ecg_pics_detection.py /home
-
-#RUN wget https://raw.githubusercontent.com/carlosym/rkt_dicom_ecg_extraction/master/rkt_dicom_ecg_extraction.py
-#RUN mv rkt_dicom_ecg_extraction.py /home/rkt_dicom_ecg_extraction.py
-#RUN wget https://raw.githubusercontent.com/carlosym/rkt_dicom_ecg_extraction/master/functions.py
-#RUN mv functions.py /home/functions.py
+RUN wget https://raw.githubusercontent.com/carlosym/rkt_dicom_ecg_peaks_detection/master/rkt_dicom_ecg_pics_detection.py
+RUN mv rkt_dicom_ecg_pics_detection.py /home/rkt_dicom_ecg_pics_detection.py
 
 RUN groupadd -r host && useradd -r -g host host && usermod -u 1000 host
 USER host
